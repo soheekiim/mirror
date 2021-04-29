@@ -1,0 +1,76 @@
+html, body, #main {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: 'Spartan', sans-serif;
+  font-weight: 300;
+  font-size: 2vh;
+  /* background: #cfaffc; */
+  background: #B4D5D9;
+  color: #faf8f4;
+  text-align: center;
+}
+
+#main {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+#banner {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  background:
+  color: black;
+}
+
+#scrolltext {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  line-height: 40px;
+  transform:translateX(100%);
+  animation: scroll 25s linear infinite;
+}
+
+@keyframes scroll {
+ 0%   {transform: translateX(100%);}
+ 100% {transform: translateX(-100%);}
+}
+
+#navbar {
+  display: inline-block;
+  font-size: 14px;
+  word-spacing: 4px;
+}
+
+#logo {
+  height: 150px;
+  width: 150px;
+}
+
+a {
+  color: #faf8f4;
+}
+
+.tab:hover {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #faf8f4;
+}
+
+.tab:link {
+  text-decoration: none;
+}
+
+.tab + .tab {
+  margin-left: 12px;
+}
+
+#footer {
+
+}
