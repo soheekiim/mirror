@@ -1,0 +1,128 @@
+html, body, #main {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: 'Spartan', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  background: #adcacd;
+  color: #faf8f4;
+  text-align: center;
+}
+
+#main {
+  height: 100%;
+}
+
+#banner {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  background-color: #adcacd;
+  z-index: 2;
+}
+
+#scrolltext {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  line-height: 40px;
+  transform:translateX(100%);
+  animation: scroll 25s linear infinite;
+}
+
+@keyframes scroll {
+ 0%   {transform: translateX(100%);}
+ 100% {transform: translateX(-100%);}
+}
+
+#navbarflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #adcacd;
+
+  padding-top: 40px;
+  padding-bottom: 16px;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#mirror {
+  margin-left: 32px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+#menu {
+  margin-right: 32px;
+}
+
+a {
+  color: #faf8f4;
+}
+
+.tab:hover {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #faf8f4;
+}
+
+.tab:link {
+  text-decoration: none;
+}
+
+.tab + .tab {
+  margin-left: 12px;
+}
+
+#pf {
+  height: 380px;
+  width: 380px;
+}
+
+#content {
+  position: relative;
+  top: 80px;
+  height: 800px;
+
+  margin-left: 80px;
+  margin-right: 80px;
+
+  line-height: 2em;
+}
+
+.reflection {
+  margin-bottom: 40px;
+}
+
+#outputTextOne {
+  font-style: italic;
+}
+
+#btab {
+  margin-left: 15px;
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  padding-top: 16px;
+  padding-left: 32px;
+  padding-bottom: 16px;
+  background-color: #adcacd;
+  font-size: 12px;
+}
