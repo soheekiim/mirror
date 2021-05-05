@@ -90,7 +90,7 @@ a {
 #content {
   position: relative;
   top: 80px;
-  height: 800px;
+  height: 1900px;
 
   margin-left: 80px;
   margin-right: 80px;
@@ -99,10 +99,10 @@ a {
 }
 
 .reflection {
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 
-#outputTextOne {
+#outputTextOne, #outputTextThree, #outputTextFour, #results1 {
   font-style: italic;
 }
 

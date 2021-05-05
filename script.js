@@ -1,13 +1,18 @@
 var executeButton;
-var executeButtonTwo;
+var executeButtonThree;
+var executeButtonFour;
 var outputTextOne;
 var outputTextTwo;
+var outputTextThree;
+var outputTextFour;
 var inputElement;
+var inputElementTwo;
 
-var m = ["I", "E"]
-var b = ["N", "S"]
-var t = ["T", "F"]
-var i = ["P", "J"]
+var fit = ["style on point", "looking good", "great choice", "love the fit"]
+
+var quizContainer;
+var resultsContainer;
+var executeButtonTwo;
 
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -16,7 +21,22 @@ window.addEventListener('DOMContentLoaded', function() {
   outputTextOne = document.getElementById("outputTextOne");
   inputElement = document.getElementById("reflectionInput");
 
+  quizContainer = document.getElementById('quiz1');
+  resultsContainer = document.getElementById('outputTextTwo');
+  executeButtonTwo = document.getElementById('submit1');
+
+  executeButtonThree = document.getElementById("reflectionTwo");
+  outputTextThree = document.getElementById("outputTextThree");
+  inputElementTwo = document.getElementById("reflectionInputTwo");
+
+  outputTextFour = document.getElementById("outputTextFour");
+  executeButtonFour = document.getElementById('reflectionThree');
+
   executeButton.addEventListener("click", feelingFunction);
+  buildQuiz();
+  executeButtonTwo.addEventListener("click", showResults);
+  executeButtonThree.addEventListener("click", fitFunction);
+  executeButtonFour.addEventListener("click", favFunction);
 
 });
 
@@ -33,105 +53,139 @@ function feelingFunction () {
 }
 
 
-window.addEventListener('DOMContentLoaded', function() {
+var quizOne = [
+  {
+    question: "I feel comfortable in new situations.",
+    answers: {
+      a: "Agree",
+      b: "Neutral",
+      c: "Disagree"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "After a long week, a lively social event is just what I need.",
+    answers: {
+      a: "Agree",
+      b: "Neutral",
+      c: "Disagree"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "I regularly make new friends.",
+    answers: {
+      a: "Agree",
+      b: "Neutral",
+      c: "Disagree"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "I feel comfortable walking up to anyone and starting a conversation.",
+    answers: {
+      a: "Agree",
+      b: "Neutral",
+      c: "Disagree"
+    },
+    correctAnswer: "a"
+  },
+];
 
-  executeButtonTwo = document.getElementById("answer");
-  outputTextTwo = document.getElementById("outputTextTwo");
 
-  executeButtonTwo.addEventListener("click", mbtiFunction);
+function buildQuiz() {
 
-});
+  var output = [];
+
+  quizOne.forEach(
+    (currentQuestion, questionNumber) => {
+
+      var answers = [];
+
+      for(letter in currentQuestion.answers){
+
+        answers.push(
+          `<label>
+            <input type="radio" name="question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.answers[letter]}
+          </label>`
+        );
+      }
+
+      output.push(
+        `<div class="question"> ${currentQuestion.question} </div>
+        <div class="answers"> ${answers.join('')} </div>`
+      );
+    }
+  );
+
+  quizContainer.innerHTML = output.join('');
+}
 
 
-function mbtiFunction () {
+function showResults() {
 
-  var randomMIndex = Math.floor(Math.random() * m.length);
-  var selectedFirst = m[randomMIndex];
+  var answerContainers = quizContainer.querySelectorAll('.answers');
 
-  var randomBIndex = Math.floor(Math.random() * b.length);
-  var selectedSecond = b[randomBIndex];
+  var numCorrect = 0;
 
-  var randomTIndex = Math.floor(Math.random() * t.length);
-  var selectedThird = t[randomTIndex];
+  // for each question...
+  quizOne.forEach( (currentQuestion, questionNumber) => {
 
-  var randomIIndex = Math.floor(Math.random() * i.length);
-  var selectedFourth = i[randomIIndex];
+    // find selected answer
+    var answerContainer = answerContainers[questionNumber];
+    var selector = `input[name=question${questionNumber}]:checked`;
+    var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-  var finalOutputTwo = "Alex's MBTI: " + selectedFirst + selectedSecond + selectedThird + selectedFourth;
+    // if answer is correct
+    if(userAnswer === currentQuestion.correctAnswer){
+      numCorrect++;
+    };
 
-  outputTextTwo.innerHTML = finalOutputTwo;
+    if(numCorrect === 4) {
+      resultsContainer.innerHTML = "i am an extrovert!";
+    };
+
+    if(numCorrect === 3) {
+      resultsContainer.innerHTML = "i am an extrovert!";
+    };
+
+    if(numCorrect === 2) {
+      resultsContainer.innerHTML = "i am an ambivert!";
+    };
+
+    if(numCorrect === 1) {
+      resultsContainer.innerHTML = "i am an ambivert!";
+    };
+
+    if(numCorrect === 0) {
+      resultsContainer.innerHTML = "i am an introvert!";
+    };
+
+  });
+}
+
+
+function fitFunction () {
+
+  var inputFit = inputElementTwo.value;
+  console.log(inputFit);
+
+  var randomFitIndex = Math.floor(Math.random() * fit.length);
+  var selectedFit = fit[randomFitIndex];
+
+  var finalOutputThree = selectedFit + "!";
+
+  outputTextThree.innerHTML = finalOutputThree;
 
 }
 
 
-// var quizContainer = document.getElementById('quiz1');
-// var resultsContainer = document.getElementById('results1');
-// var submitButton = document.getElementById('submit');
-//
-// var quizOne = [
-//   {
-//     question: "I feel comfortable in new situations.",
-//     answers: {
-//       a: "Agree",
-//       b: "Neutral",
-//       c: "Disagree"
-//     },
-//   {
-//     question: "After a long week, a lively social event is just what I need.",
-//     answers: {
-//       a: "Agree",
-//       b: "Neutral",
-//       c: "Disagree"
-//     },
-//   {
-//     question: "I can start conversations with ease.",
-//     answers: {
-//       a: "Agree",
-//       b: "Neutral",
-//       c: "Disagree"
-//    },
-// ];
-//
-// function buildQuiz() {
-//
-//   // variable to store the HTML output
-//   var output = [];
-//
-//   // for each question...
-//   quizOne.forEach(
-//     (currentQuestion, questionNumber) => {
-//
-//       // variable to store the list of possible answers
-//       var answers = ["INTJ", "ISFJ", "ENFJ", "ISTP", "ESFJ"];
-//
-//       // and for each available answer...
-//       for(letter in currentQuestion.answers){
-//
-//         // ...add an HTML radio button
-//         answers.push(
-//           `<label>
-//             <input type="radio" name="question${questionNumber}" value="${letter}">
-//             ${letter} :
-//             ${currentQuestion.answers[letter]}
-//           </label>`
-//         );
-//       }
-//
-//       // add this question and its answers to the output
-//       output.push(
-//         `<div class="question"> ${currentQuestion.question} </div>
-//         <div class="answers"> ${answers.join('')} </div>`
-//       );
-//     }
-//   );
-//
-//   // finally combine our output list into one string of HTML and put it on the page
-//   quizContainer.innerHTML = output.join('');
-// }
-//
-//
-// function showResults() {
-//
-//   submitButton.addEventListener('click', showResults);
-//
-// }
+function favFunction () {
+
+  var finalOutputFour = "one step closer to true reflection!";
+
+  outputTextFour.innerHTML = finalOutputFour;
+
+}
