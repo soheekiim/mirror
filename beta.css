@@ -102,6 +102,17 @@ a {
   margin-bottom: 80px;
 }
 
+.button {
+  font-family: 'Spartan', sans-serif;
+  font-size: 12px;
+  padding-top: 4px;
+}
+
+.button:hover {
+  opacity: 1;
+  transition-duration: 0.6s;
+}
+
 #outputTextOne, #outputTextThree, #outputTextFour, #results1 {
   font-style: italic;
 }
